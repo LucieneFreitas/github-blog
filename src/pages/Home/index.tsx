@@ -17,7 +17,7 @@ export interface IPost {
 }
 
 export function Home() {
-  const [textSearch, setTextSearch] = useState('')
+  //const [textSearch, setTextSearch] = useState('')
   const [posts, setPosts] = useState<IPost[]>([] as IPost[])
   const [postsCounter, setPostsCounter] = useState(0)
 

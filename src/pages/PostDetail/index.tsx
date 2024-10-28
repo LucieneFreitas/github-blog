@@ -2,9 +2,9 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
-import ReactMarkdown from 'react-markdown'
+//import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
-import remarkGfm from 'remark-gfm'
+//import remarkGfm from 'remark-gfm'
 import { api } from '../../lib/axios'
 import {
   NavButton,
@@ -89,7 +89,7 @@ export function PostDetail() {
       </PostDetailCard>
       <PostDetailContent>
         <div>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
+          {/*<ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>*/}
         </div>
       </PostDetailContent>
     </PostDetailContainer>

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import ReactMarkdown from 'react-markdown'
+//import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
 export const PostDetailContainer = styled.div`
