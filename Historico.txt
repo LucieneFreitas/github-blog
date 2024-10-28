@@ -1,0 +1,126 @@
+========APP============
+1. Importações
+ThemeProvider e styled-components: O ThemeProvider é usado para fornecer um tema global ao aplicativo, que pode ser acessado pelos componentes estilizados.
+GlobalStyle: Um arquivo de estilos globais que define regras de CSS aplicadas em todo o aplicativo. Isso ajuda a manter um design consistente.
+defaultTheme: Um tema padrão definido em outro arquivo (não mostrado aqui), que contém estilos como cores, fontes e espaçamentos.
+BrowserRouter: Componente do react-router-dom, que fornece funcionalidade de roteamento baseada no navegador, permitindo navegação entre diferentes páginas/rotas.
+Router: Um componente customizado (presumivelmente) que define as rotas do aplicativo.
+useEffect e useState: Hooks do React para gerenciar o estado e os efeitos colaterais (como temporizadores e chamadas de API).
+Loading: Componente de carregamento, provavelmente uma animação ou mensagem de "Carregando..." que é exibido enquanto o estado isLoading está true.
+
+2. Função App
+Esta é a função principal do aplicativo. Ela define e renderiza o conteúdo da interface do usuário.
+2.1. Estado Local: isLoading
+const [isLoading, setIsLoading] = useState(true)
+Aqui, usamos o useState para definir uma variável de estado chamada isLoading, que começa como true. Essa variável controla se o aplicativo está exibindo o componente de carregamento ou o conteúdo principal.
+
+
+linha 12 ate 22
+O useEffect é usado para executar o código logo após o componente ser montado (renderizado pela primeira vez). Aqui ele configura um temporizador (setTimeout) de 4 segundos (1000 * 4), após o qual o estado isLoading será alterado para false, indicando que o carregamento terminou.
+
+O retorno da função dentro do useEffect (return () => { clearTimeout(delay) }) garante que o temporizador seja limpo se o componente for desmontado antes de o temporizador completar (boa prática para evitar vazamento de memória).
+
+
+linha 24 ate 35
+Aqui temos a renderização condicional com base no estado isLoading. Se o isLoading for true, o componente de carregamento (<Loading />) é exibido. Se o isLoading for false, o aplicativo renderiza o BrowserRouter e o Router.
+
+ThemeProvider: Envolve todo o conteúdo da aplicação, garantindo que todos os componentes tenham acesso ao tema definido em defaultTheme.
+GlobalStyle: Aplica os estilos globais definidos no arquivo de estilos globais.
+BrowserRouter: É responsável por lidar com as rotas do aplicativo.
+Router: Componente que define as diferentes rotas e páginas da aplicação.
+
+
+=============@TYPES==========
+O código fornecido está estendendo e tipando corretamente o tema do styled-components no TypeScript. Ele permite que o tema customizado, defaultTheme, seja reconhecido em toda a aplicação React, utilizando o TypeScript para garantir que as propriedades de tema estejam devidamente tipadas.
+
+
+=============LIB================================
+Router.tsx:
+O código fornecido implementa o roteamento em um aplicativo React usando a biblioteca react-router-dom. Ele cria diferentes rotas que renderizam componentes específicos quando o usuário acessa determinadas URLs. 
+
+Route e Routes: São componentes da biblioteca react-router-dom usados para definir e organizar as rotas da aplicação.
+O componente <Routes> envolve todas as rotas que serão definidas. Ele é responsável por renderizar a rota correta com base no caminho da URL atual.
+Route: Define uma rota específica no aplicativo, associando um caminho (URL) a um componente React.
+
+AXIOS=>
+Cria uma instância de uma API pré-configurada, que será usada para fazer requisições HTTP. Essa instância é criada com uma configuração básica que define a URL base da API do GitHub (https://api.github.com/), facilitando as chamadas subsequentes para essa API. 
+
+
+============= PAGES\HOME\PERSONINFO=============
+linha 6 - 14
+Interface: "esqueleto" que diz quais informações esperamos sobre um usuário. Aqui, estamos dizendo que esperamos um usuário com:
+nome
+número de seguidores
+nome de usuário no GitHub
+empresa
+URL do perfil no GitHub
+URL da imagem de perfil
+descrição (bio)
+
+linha 17
+useState: Aqui estamos criando uma variável chamada userInfo que irá armazenar as informações do usuário.
+setUserInfo: É uma função que vamos usar para atualizar as informações do usuário.
+No começo, userInfo começa como undefined, o que significa que ainda não temos informações.
+
+linha 19 e 20=> Função para Buscar Usuários
+fetchUsers: É uma função que vamos usar para buscar os dados do usuário do GitHub.
+api.get('users/LucieneFreitas'): Usamos a configuração da API para fazer uma chamada que pega as informações do usuário chamad LucieneFreitas.
+
+linha 21 - 29=> Tratando a Resposta
+Desestruturar: Aqui estamos pegando as informações que recebemos da API e colocando cada uma em uma variável separada, o que facilita o uso delas.
+html_url: htmlUrl e avatar_url: avatarUrl: Estamos renomeando as variáveis para que sejam mais fáceis de usar mais tarde.
+
+linha 30=>Criando um Novo Objeto do Usuário
+newUserObj: Criamos um novo objeto com as informações que recebemos da API.
+setUserInfo(newUserObj): Atualizamos o estado userInfo com as novas informações do usuário.
+
+
+============= PAGES\HOME\POSTCARD=============
+linha 7 - 9=>Interface do Cartão de Post
+Interface IPostCard: Aqui estamos definindo uma estrutura para o que nosso componente PostCard espera receber.
+Ele deve receber um objeto post, que deve seguir a estrutura definida pela interface IPost.
+
+linha 11
+Definindo o Componente: Estamos criando uma função chamada PostCard. Essa função é um componente que exibirá as informações do post.
+Desestruturação: O { post } significa que estamos recebendo um objeto com a propriedade post e a extraindo para usá-la diretamente.
+
+linha 12=>Extraindo Dados do Post
+Extraindo Propriedades: Aqui estamos pegando algumas propriedades específicas do objeto post e renomeando created_at para createdAt para facilitar o uso. Agora temos:
+createdAt: A data em que o post foi criado.
+body: O conteúdo do post.
+title: O título do post.
+number: Um identificador único do post (como um número de referência).
+
+linha 13=>
+Formatando a Data: Aqui estamos transformando a data de criação do post em um formato que diz quanto tempo se passou desde que o post foi criado.
+new Date(createdAt): Convertendo a string da data em um objeto de data.
+locale: ptBR: Especificamos que queremos a data formatada em português.
+addSuffix: true: Isso adiciona palavras como "atrás" ao resultado (por exemplo, "3 dias atrás").
+
+linha 19=><PostCardContainer>: Usamos o componente estilizado que criamos. O to={/${number}} significa que quando o usuário clicar no cartão, ele será levado para uma página com a rota correspondente ao número do post.
+<h1>{title}</h1>: Exibimos o título do post.
+<span>{formattedDate}</span>: Exibimos quanto tempo se passou desde que o post foi criado.
+<main>: Contém o corpo do post.
+<p>{formatText(body, 80)}</p>: Aqui chamamos a função formatText para formatar o corpo do post, limitando-o a 80 caracteres (provavelmente para não ocupar muito espaço no cartão).
+
+
+============= PAGES\HOME\index.tsx=============
+linhas 12 - 17
+Interface IPost: Aqui estamos definindo como os dados de um post devem ser estruturados. Cada post deve ter um título (title), um corpo (body), uma data de criação (created_at) e um número de identificação (number).
+
+linhas 20 - 22
+Estado: Aqui estamos criando três variáveis de estado:
+*textSearch: Armazena o texto que o usuário digita na barra de pesquisa.
+*posts: Um array que armazenará a lista de posts que vamos buscar da API.
+*postsCounter: Um contador que mantém a quantidade total de posts encontrados.
+
+linhas 24 - 32
+*fetchPosts: Essa função é responsável por buscar posts da API do GitHub.
+*useCallback: Usamos isso para que a função não seja recriada toda vez que o componente renderiza, melhorando a performance.
+*api.get(...): Estamos fazendo uma requisição à API para buscar os posts que correspondem à pesquisa.
+*setPosts(response.data.items): Atualizamos a lista de posts com os dados que recebemos.
+*setPostsCounter(response.data.total_count): Atualizamos o contador de posts com o total de posts encontrados.
+
+linhas 34 - 34=>Efeito para Buscar Posts na Inicialização
+*useEffect: Usamos isso para executar a função fetchPosts quando o componente é montado pela primeira vez.
+*fetchPosts(''): Chamamos a função de busca de posts, passando uma string vazia para buscar todos os posts inicialmente.
