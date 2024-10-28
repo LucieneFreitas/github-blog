@@ -29,7 +29,7 @@ This project is sponsored by Rocketseact..
 
 
 
-👉 Link to Access: <a href="https://github-blog-lucienefreitas.vercel.app">https://github-blog-luciene.vercel.app</a>
+👉 Link to Access: <a href="https://lfgithubblog.netlify.app/">https://lfgithubblog.netlify.app/</a>
 
 ## 🚀 Technologies
 
