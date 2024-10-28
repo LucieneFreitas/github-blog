@@ -1,50 +1,66 @@
-# React + TypeScript + Vite
+<h1 align="center">
+  <img alt="Ignite Feed" src="https://res.cloudinary.com/vilmarbatista/image/upload/v1671730230/Development/Ignite/github_blog_w9k96z.png" width="100%" />
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h3 align="center">
+  Github Blog
+</h3>
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LucieneFreitas/github-blog?color=%232677a8">
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  <a href="https://www.linkedin.com/in/luciene-freitas-0a11b941//" target="_blank" rel="noopener noreferrer">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-luciene-2677a8">
+  </a>  
 
-- Configure the top-level `parserOptions` property like this:
+  <a href="https://github.com/LucieneFreitas/github-blog/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/LucieneFreitas/github-blog?color=%232677a8">
+  </a> 
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+  
+</p>
+
+
+## ✅ About the project
+
+This project is sponsored by Rocketseact..
+
+
+
+👉 Link to Access: <a href="https://github-blog-vilmarsitiodigital.vercel.app">https://github-blog-luciene.vercel.app</a>
+
+## 🚀 Technologies
+
+Technologies that I used to develop this api
+
+- [React JS](https://pt-br.reactjs.org/)
+- [Vite JS](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Styled Components](https://styled-components.com/)
+- [Axios](https://axios-http.com/)
+
+## 💻 Getting started
+
+**Clone the project and access the folder**
+
+```bash
+$ git clone https://github.com/LucieneFreitas/github-blog.git && cd github-blog
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+**Follow the steps below**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+# Install the dependencies
+$ npm i
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+# To finish, run
+$ npm run dev
+
+# Well done, project is started!
 ```
+
+---
+
+Made with 💚 by Luciene Freitas 🤝 [See my linkedin](https://www.linkedin.com/in/luciene-freitas-0a11b941/)
